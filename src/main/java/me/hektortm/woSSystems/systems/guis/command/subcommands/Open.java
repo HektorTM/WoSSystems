@@ -1,5 +1,6 @@
 package me.hektortm.woSSystems.systems.guis.command.subcommands;
 
+import me.hektortm.woSSystems.systems.guis.GUIHandler;
 import me.hektortm.woSSystems.systems.guis.GUIManager;
 import me.hektortm.woSSystems.systems.interactions.InteractionManager;
 import me.hektortm.woSSystems.utils.Permissions;
@@ -11,10 +12,10 @@ import org.bukkit.entity.Player;
 
 public class Open extends SubCommand {
 
-    private final GUIManager guiManager;
+    private final GUIHandler guiHandler;
 
-    public Open(GUIManager guiManager) {
-        this.guiManager = guiManager;
+    public Open(GUIHandler guiHandler) {
+        this.guiHandler = guiHandler;
 
     }
 
@@ -44,6 +45,6 @@ public class Open extends SubCommand {
             return;
         }
 
-        guiManager.openGUI(target, id);
+        guiHandler.openGUI(id, target);
     }
 }

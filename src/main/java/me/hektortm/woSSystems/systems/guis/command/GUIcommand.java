@@ -1,7 +1,9 @@
 package me.hektortm.woSSystems.systems.guis.command;
 
 
+import me.hektortm.woSSystems.systems.guis.GUIHandler;
 import me.hektortm.woSSystems.systems.guis.command.subcommands.Open;
+import me.hektortm.woSSystems.systems.guis.command.subcommands.Reload;
 import me.hektortm.woSSystems.systems.interactions.InteractionManager;
 import me.hektortm.woSSystems.systems.guis.GUIManager;
 import me.hektortm.woSSystems.utils.PermissionUtil;
@@ -17,9 +19,10 @@ import java.util.Map;
 public class GUIcommand implements CommandExecutor {
     private final Map<String, SubCommand> subCommands = new HashMap<>();
 
-    public GUIcommand(GUIManager manager) {
+    public GUIcommand(GUIHandler manager) {
 
         subCommands.put("open", new Open(manager));
+        subCommands.put("reload", new Reload(manager));
 
     }
 

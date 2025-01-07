@@ -12,6 +12,9 @@ import me.hektortm.woSSystems.economy.commands.EcoCommand;
 import me.hektortm.woSSystems.economy.commands.PayCommand;
 import me.hektortm.woSSystems.listeners.*;
 import me.hektortm.woSSystems.professions.crafting.CRecipeManager;
+import me.hektortm.woSSystems.systems.guis.GUIHandler;
+import me.hektortm.woSSystems.systems.guis.GUIManager;
+import me.hektortm.woSSystems.systems.guis.command.GUIcommand;
 import me.hektortm.woSSystems.systems.interactions.InteractionManager;
 import me.hektortm.woSSystems.systems.loottables.LoottableManager;
 import me.hektortm.woSSystems.systems.loottables.commands.LoottableCommand;
@@ -67,6 +70,7 @@ public final class WoSSystems extends JavaPlugin {
     private NicknameManager nickManager;
     private Coinflip coinflipCommand;
     private LoottableManager lootTableManager;
+    private GUIManager guiManager;
 
 
     // TODO:
@@ -88,7 +92,7 @@ public final class WoSSystems extends JavaPlugin {
         unlockableManager = new UnlockableManager();
         fishingManager = new FishingManager(fishingItemsFolder);
 
-
+        guiManager = new GUIManager();
         citemManager = new CitemManager(); // Ensure interactionManager is null-safe.
         resolver = new PlaceholderResolver(statsManager, citemManager);
         conditionHandler = new ConditionHandler(unlockableManager, statsManager, ecoManager, citemManager);
@@ -167,6 +171,7 @@ public final class WoSSystems extends JavaPlugin {
         cmdReg("channel", new ChatCommand(chatManager));
         cmdReg("nickname", new NicknameCommand(nickManager, chatManager));
         cmdReg("loottable", new LoottableCommand(lootTableManager));
+        cmdReg("gui", new GUIcommand(new GUIHandler(guiManager)));
     }
 
     private void registerEvents() {
