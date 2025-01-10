@@ -1,5 +1,6 @@
 package me.hektortm.woSSystems.listeners;
 
+import me.hektortm.woSSystems.WoSSystems;
 import me.hektortm.woSSystems.chat.ChatManager;
 import me.hektortm.woSSystems.economy.commands.Coinflip;
 import me.hektortm.woSSystems.systems.unlockables.UnlockableManager;
@@ -21,13 +22,12 @@ public class CleanUpListener implements Listener {
     private final UnlockableManager manager;
     private final WoSCore core;
     private final Coinflip coinflip;
-    private final ChatManager chatManager;
+    private final ChatManager chatManager = new ChatManager(WoSSystems.getPlugin(WoSSystems.class));
 
-    public CleanUpListener(WoSCore core, UnlockableManager manager, Coinflip coinflip, ChatManager chatManager) {
+    public CleanUpListener(WoSCore core, UnlockableManager manager, Coinflip coinflip) {
         this.core = core;
         this.manager = manager;
         this.coinflip = coinflip;
-        this.chatManager = chatManager;
     }
 
 

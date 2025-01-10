@@ -1,32 +1,34 @@
-package me.hektortm.woSSystems.chat.commands.subcommands;
+package me.hektortm.woSSystems.channels.cmd.subcmd.nick;
 
-import me.hektortm.woSSystems.chat.NicknameManager;
+import me.hektortm.woSSystems.channels.NicknameManager;
 import me.hektortm.woSSystems.utils.Permissions;
 import me.hektortm.woSSystems.utils.SubCommand;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Requests extends SubCommand {
-
+public class Unreserve extends SubCommand {
     private final NicknameManager manager;
 
-    public Requests(NicknameManager manager) {
+    public Unreserve(NicknameManager manager) {
         this.manager = manager;
     }
 
     @Override
     public String getName() {
-        return "requests";
+        return "unreserve";
     }
 
     @Override
     public Permissions getPermission() {
-        return Permissions.NICK_REQUEST_VIEW;
+        return Permissions.NICK_RESERVE;
     }
 
     @Override
     public void execute(CommandSender sender, String[] args) {
         Player p = (Player) sender;
-        manager.openRequestMenu(p);
+        String nick = manager.getPlayersReservedNick(p.getUniqueId());
+
+        manager.unreserveNickname(p.getUniqueId(), nick);
+        p.sendMessage("Unreserved nickname: " + nick);
     }
 }

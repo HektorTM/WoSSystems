@@ -1,7 +1,7 @@
 package me.hektortm.woSSystems.listeners;
 
 import me.hektortm.woSSystems.chat.ChatManager;
-import me.hektortm.woSSystems.chat.NicknameManager;
+import me.hektortm.woSSystems.channels.NicknameManager;
 import me.hektortm.woSSystems.utils.dataclasses.ChannelData;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -75,7 +75,4 @@ public class ChatListener implements Listener {
                 .replace("%msg%", e.getMessage());
         e.setFormat(ChatColor.translateAlternateColorCodes('&', format));
     }
-
-
-
 }
